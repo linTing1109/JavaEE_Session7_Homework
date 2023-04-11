@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd"> 
+<struts-config>
+    <form-beans>
+        <form-bean name="backedActionForm" type="com.training.formbean.BackedActionForm"/>
+        <form-bean name="backedListForm" type="com.training.formbean.BackedListForm"/>
+        
+        <form-bean name="frontendActionForm" type="com.training.formbean.GoodsOrderForm"/>
+        <form-bean name="loginActionForm" type="com.training.formbean.LoginRegisterForm"/>
+        <form-bean name="memberBuyForm" type="com.training.formbean.MemberBuyForm"/>
+    </form-beans>
+    <action-mappings>
+        <action path="/BackendAction" type="com.training.action.BackendAction" 
+        		name="backedActionForm" parameter="action">
+        	<forward name="goodsList" path="BackendAction.do?action=queryGoods" redirect="true"/>
+        	<forward name="goodsListView" path="/WEB-INF/view/Backend/VM_Backend_GoodsList.jsp" />
+        	
+        	<forward name="goodsCreate" path="BackendAction.do?action=addGoodsView" redirect="true"/>
+        	<forward name="goodsCreateView" path="/WEB-INF/view/Backend/VM_Backend_GoodsCreate.jsp" />
+        	
+        	<forward name="goodsReplenishment" path="BackendAction.do?action=updateGoodsView" redirect="true"/>
+        	<forward name="goodsReplenishmentView" path="/WEB-INF/view/Backend/VM_Backend_GoodsReplenishmentAjax.jsp" />
+        	
+        	
+        	<forward name="goodsSaleReport" path="BackendAction.do?action=querySalesReportView" redirect="true"/>
+        	<forward name="goodsSaleReportView" path="/WEB-INF/view/Backend/VM_Backend_GoodsSaleReport.jsp" />
+        </action>
+        
+        <action path="/BackendSearch" type="com.training.action.BackendAction" 
+        		name="backedListForm" parameter="action">
+        	<forward name="goodsList" path="BackendSearch.do?action=searchGoodsListView" redirect="true"/>
+        	<forward name="goodsListView" path="/WEB-INF/view/Backend/VM_Backend_GoodsList.jsp" />
+        </action>
+        
+        <action path="/FrontendAction" type="com.training.action.FrontendAction" 
+        		name="frontendActionForm" parameter="action">
+        		<!-- 須作轉一手概念避免F5 -->
+        	<forward name="vendingMachine" path="/FrontendAction.do?action=queryAllGoods" redirect="true"/>
+        	<forward name="vendingMachineView" path="/WEB-INF/view/Frontend/VendingMachine.jsp" />
+        	
+        	<forward name="vendingMachineOrder" path="/WEB-INF/view/Frontend/VendingMachine_PersonOrder.jsp" />
+        	
+        	<forward name="idSaleReport" path="/FrontendAction.do?action=queryIdSalesReportView" redirect="true"/>
+        	<forward name="idSaleReportView" path="/WEB-INF/view/Frontend/VendingMachine_PersonOrder.jsp" />
+        	
+        	<forward name="updateMember" path="/FrontendAction.do?action=updateMemberView" redirect="true"/>
+        	<forward name="updateMemberView" path="/WEB-INF/view/Frontend/VendingMachine_MemberModify.jsp" />
+        	
+        	
+        </action>
+        
+        <action path="/LoginAction" type="com.training.action.LoginAction" 
+        		name="loginActionForm" parameter="action">
+            <!-- 登入成功:操作首頁 -->
+            <forward name="success" path="/FrontendAction.do?action=queryAllGoods" redirect="true"/>
+            <!-- 登入失敗:登入頁面 -->
+            <forward name="fail" path="/FrontLogin.jsp" redirect="true"/>
+             <!-- 新增帳號頁面 -->
+            <forward name="add" path="/FrontLoginRegister.jsp" redirect="true"/>
+        </action>
+        <action path="/MemberAction" type="com.training.action.MemberAction" 
+        		 name="memberBuyForm" parameter="action">	
+        	<forward name="vendingMachine" path="/FrontendAction.do?action=queryAllGoods" redirect="true"/>
+        	<forward name="vendingMachineView" path="/WEB-INF/view/Frontend/VendingMachine.jsp" />
+        	
+        	<forward name="updateCheckOut" path="/MemberAction.do?action=updateCheckOutView" redirect="true"/>
+        	<forward name="updateCheckOutView" path="/WEB-INF/view/Frontend/VendingMachine_checkOut.jsp" />
+        </action>       
+    </action-mappings>
+</struts-config>

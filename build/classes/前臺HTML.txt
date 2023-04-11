@@ -1,0 +1,14 @@
+<td colspan="2" align="right">
+   	<!-- 分頁 -->
+	<h3 class="page"> <a href="FrontendAction.do?pageNo=1&amp;action=searchGoods&amp;searchKeyword=&amp;jsessionid=11061D62448BBEE2E7020A53E0EC7A15"> 上一頁 </a> </h3>				
+	<h3 class="page">
+		<a href="FrontendAction.do?pageNo=1&amp;action=searchGoods&amp;searchKeyword=&amp;jsessionid=11061D62448BBEE2E7020A53E0EC7A15">1</a> 
+	</h3>					
+	<h3 class="page">
+		<a href="FrontendAction.do?pageNo=2&amp;action=searchGoods&amp;searchKeyword=&amp;jsessionid=11061D62448BBEE2E7020A53E0EC7A15" style="color:red;">2</a> 
+	</h3>					
+	<h3 class="page">
+		<a href="FrontendAction.do?pageNo=3&amp;action=searchGoods&amp;searchKeyword=&amp;jsessionid=11061D62448BBEE2E7020A53E0EC7A15">3</a> 
+	</h3>	
+	<h3 class="page"> <a href="FrontendAction.do?pageNo=3&amp;action=searchGoods&amp;searchKeyword=&amp;jsessionid=11061D62448BBEE2E7020A53E0EC7A15"> 下一頁 </a> </h3>		
+</td>
